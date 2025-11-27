@@ -4,7 +4,7 @@
 
 # Routes
 
-## Home:
+## Home:  
 `/` 
 
 ## Quizz:
