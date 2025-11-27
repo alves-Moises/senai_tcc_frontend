@@ -1,15 +1,13 @@
-#TCC Senai - FrontEnd
+# TCC Senai - FrontEnd
 
-##Random Quizz generator
+## Random Quizz generator
 
 # Routes
 
 ## Home:
-
 `/` 
 
 ## Quizz:
-
 To access the quizz page:
     `/quizz`
 
