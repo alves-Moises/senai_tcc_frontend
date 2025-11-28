@@ -1,5 +1,5 @@
 {
-  "name": "haveibeenhacked",
+  "name": "quizz",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "phosphor-icons": "^1.4.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
