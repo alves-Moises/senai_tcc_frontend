@@ -1,11 +1,21 @@
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
+import { HowItWorks } from "../../components/HowItWorks"
+import { LetsQuizz } from "../../components/LetsQuizz"
+
+import { MainContainer } from "./style"
 
 export function Home(){
     return(
-        <>
+        < >
             <Header />
-            <h1>test </h1>
+
+            <MainContainer class="main">
+
+                <HowItWorks />
+                <LetsQuizz />
+
+            </MainContainer>
             <Footer />
         </>
     )
