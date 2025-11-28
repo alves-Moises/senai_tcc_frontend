@@ -1,7 +1,44 @@
+import { 
+    Col, 
+    Container, 
+    Row 
+
+} from "./style"
+
+import {
+    GithubLogo, 
+    LinkedinLogo 
+} from "@phosphor-icons/react"
+
 export function Footer(){
     return(
-        <>
-            <h1>Footer</h1>
-        </>
+        <Container>
+            <Row>
+                <Col>
+                    © 2025 Alves Informática, all rights reserved.
+                </Col>
+                <Col>
+                    <a 
+                        href="https://www.github.com/alves-Moises"
+                        target="_blank"
+                    >
+                        <GithubLogo 
+                            size={32} 
+                            className="icon"
+                        />
+                    </a>
+                    <a 
+                        href="https://www.linkedin.com/in/alves-Moises"
+                        target="_blank"
+                    >
+                        <LinkedinLogo 
+                            size={32} 
+                            className="icon"
+                        />
+                    </a>
+
+                </Col>
+            </Row>
+        </Container>
     )
 }
