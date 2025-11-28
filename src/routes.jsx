@@ -8,18 +8,20 @@ import { FormRules } from "./pages/FormRules";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />
+        element: <Home />,
     },
     {
-        path: "/quizz",
-        element: <Quizz />
+        path: "/quizz/",
+        element: <Quizz />,
+        
+        
     },
     {
         path: "/records",
-        element: <Records />
+        element: <Records />            
     },
     {
         path: "/form",
         element: <FormRules />
-    }
+    }    
 ])
