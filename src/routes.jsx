@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 import { Home } from "./pages/Home";
 import { Quizz}  from "./pages/Quizz"
 import { Records } from "./pages/Records";
+import { FormRules } from "./pages/FormRules";
 
 export const router = createBrowserRouter([
     {
@@ -16,5 +17,9 @@ export const router = createBrowserRouter([
     {
         path: "/records",
         element: <Records />
+    },
+    {
+        path: "/form",
+        element: <FormRules />
     }
 ])
