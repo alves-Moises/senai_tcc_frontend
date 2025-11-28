@@ -4,11 +4,13 @@ import {
 } from "react"
 import { Container } from "./style"
 import { HourglassMediumIcon } from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
 
 export const Form = () => {
     const [catList, setCatList] = useState(null);
     const [loading, setLoading] = useState(true)
-    
+    const navigate = useNavigate()
+
     useEffect(() => {
         async function fetchAPI(){
             const URLBase = "https://opentdb.com/"
@@ -35,15 +37,34 @@ export const Form = () => {
     
 
     //TODO: fix eventListener
-    // document.getElementById("sendForm").addEventListener("click", () => {
-    //     const quantity = document.getElementById("qtd").value
-    //     const cat = document.getElementById("selectCat").value
-    //     const difficulty = document.getElementById("selectDifficulty").value
-    //     const type = document.getElementById("selectType").value    
-    // })
+
+            
+    function sendForm(event, navigate){
+        event.preventDefault()
+        const formData = {
+            amount: document.getElementById("qtd").value,            
+            category: document.getElementById("selectCat").value,            
+            difficulty:document.getElementById("selectDifficulty").value,            
+            type: document.getElementById("selectType").value
+        }
+
+        const newData = {}
+        Object.keys(formData).forEach(
+            key => {
+                if(formData[key] !== "random"){
+                    newData[key] = formData[key]
+                }
+            }
+        )
+        
+        // console.log(newData)
+        // alert(`${newData}`)
+        navigate("/quizz", {state: newData})
+
+    }
+
 
     if(loading){return (
-
             <Container>
                 <h1 id="Load">
                     <HourglassMediumIcon size={32} />
@@ -53,6 +74,7 @@ export const Form = () => {
         )
     }
 
+
     
 
     
@@ -61,7 +83,7 @@ export const Form = () => {
             <Container className="main">
                 <h1>Rules for your Quizz</h1>
 
-                <form >
+                <form action={sendForm}>
                     <div
                         className="qtdField field"
                     >
@@ -91,6 +113,12 @@ export const Form = () => {
                             id="selectCat"
                             className="optInput"
                         >   
+                            <option
+                                value="random"
+                                className="optCat"
+                            >
+                                Random
+                            </option>
                             {
                                 catList.map(cat => 
                                     // console.log(cat)
@@ -118,15 +146,24 @@ export const Form = () => {
                             className="optInput"
                         >
                             <option
+                                value="random"
+                                className="optCat"
+                            >
+                                Random
+                            </option>
+
+                            <option
                                 value="easy"
                             >
                                 Easy
                             </option>
+
                             <option
                                 value="medium"
                             >
                                 Medium
                             </option>
+
                             <option
                                 value="hard"
                             >
@@ -146,11 +183,19 @@ export const Form = () => {
                             id="selectType"
                             className="optInput"
                         >
+                            <option
+                                value="random"
+                                className="optCat"
+                            >
+                                Random
+                            </option>
+
                             <option 
                                 value="boolean"
                             >
                                 True/False
                             </option>
+
                             <option 
                                 value="multiple"
                             >
@@ -160,11 +205,15 @@ export const Form = () => {
                         </select>
                     </div>
 
-                    
-                    <a id="sendForm">
+                    <button
+                        id="sendForm" 
+                        onClick={(event) => {sendForm(event, navigate)}}
+                    >
                         SEND
-                    </a>
+                    </button>
+                    
                 </form>
+
                 
                     
                 
