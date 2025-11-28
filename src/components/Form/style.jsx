@@ -38,10 +38,12 @@ export const Container = styled.div`
         justify-content: space-between;
 
         align-items: stretch;
-        gap: 50px;
+        /* gap: 50px; */
         border: 1px dotted #dfdfdf;
         label{
-            padding: 5px;
+            display: flex;
+            justify-content: stretch;
+            padding: 5px 25px;
         }
         select{
 
@@ -63,18 +65,22 @@ export const Container = styled.div`
         align-items: center;
 
         background-color: #800066;
+        color: #dfdfdf;
         padding: 8px 10px;
         margin-top: 15px;
         width: 30%;
         margin-right: auto;
         margin-left: auto;
         transition-duration: 0.5s;
+        border: 0.5px solid #dfdfdf;
+        
 
     }
 
     #sendForm:hover{
         background-color: #ff00cc;
         transition-duration: 0.5s;
+        cursor: pointer;
 
     }
 
