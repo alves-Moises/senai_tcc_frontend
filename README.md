@@ -8,6 +8,8 @@
 
 ### Home:  ```/```
 
+### FormQuiz: ```/form```
+
 ### Quizz
 
 To access the quizz page:  
