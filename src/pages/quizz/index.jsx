@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Footer } from "../../components/Footer"
 import { Header } from "../../components/Header"
 import { useLocation } from "react-router-dom"
-import { Card, Container, LoadingContainer } from "./style"
+import { Card, Container, Form, LoadingContainer } from "./style"
 
 export function Quizz() {
     const [loading, setLoading] = useState(true)
@@ -74,7 +74,8 @@ export function Quizz() {
     };
     // const [seachParams, setSearchParams] = useSearchParams
     
-    if(loading){return(
+    if(loading){
+        return(
             <>
 
                 <Header />
@@ -96,120 +97,144 @@ export function Quizz() {
 
                 <h1>quizz</h1>
 
-                <form action="">
+                <Form action="">
 
-                    {questList.map(
-                        ({
-                            type,
-                            difficulty,
-                            category,
-                            question,
-                            correct_answer,
-                            incorrect_answers
-                        }, index) => {
-                            let answerList = []
+                    {
+                        questList.map(
+                            (
+                                {
+                                    type,
+                                    difficulty,
+                                    category,
+                                    question,
+                                    correct_answer,
+                                    incorrect_answers
+                                }, index
+                            ) => {
+                                let answerList = []
 
-                            answerList.push({
-                                "answer": correct_answer,
-                                "correct": "true"
-                            })
-
-                            incorrect_answers.forEach(answer => {
                                 answerList.push({
-                                    "answer": answer,
-                                    "correct": "false"
+                                    "answer": correct_answer,
+                                    "correct": "true"
                                 })
-                            })
 
-                            console.log(incorrect_answers)
+                                incorrect_answers.forEach(answer => {
+                                    answerList.push({
+                                        "answer": answer,
+                                        "correct": "false"
+                                    })
+                                })
 
-                            let randomList = []
-                            let len = answerList.length
-                            for(
-                                let i = 0; 
-                                i <  len; 
-                                i++
-                            ){
-                                randomList.push(
-                                    answerList.splice(
-                                        Math.floor(
-                                            Math.random()*(
-                                                answerList.length -1
-                                            )
-                                        ),
-                                        1
+                                let randomList = []
+                                let len = answerList.length
+                                for(
+                                    let i = 0; 
+                                    i <  len; 
+                                    i++
+                                ){
+                                    randomList.push(
+                                        answerList.splice(
+                                            Math.floor(
+                                                Math.random()*(
+                                                    answerList.length -1
+                                                )
+                                            ),
+                                            1
+                                        )
                                     )
+                                }
+
+                                // console.log(answerList)
+                                return(
+                                    
+                                    <Card key={index}>
+
+
+                                        <div className="half-size">
+
+                                            
+
+                                            <div className="l-side">
+                                                <h3 className="QTitle">
+                                                    {decodeHtmlEntities(question)}
+                                                </h3>
+                                                <select 
+                                                    className={`Q${index} answSelect`}
+                                                    name={`Q${index}`}
+                                                >
+
+                                                    {
+                                                        randomList.map((item, index) => {
+                                                            let answer = item[0].answer
+                                                            let correct = item[0].correct
+
+                                                            return(
+                                                                <div 
+                                                                    key={index}
+                                                                    class="cardOptions"
+                                                                >
+                                                                    <option
+                                                                        name={index}
+                                                                        class={`${correct} opt`}    
+                                                                    >
+                                                                        {decodeHtmlEntities(answer)}
+                                                                    </option>
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </select>
+                                            </div>
+
+                                            <div className="r-side">
+
+
+                                                <p>
+                                                    Category: 
+                                                    {category}
+                                                </p>
+
+                                                <p>
+                                                    Type:
+                                                    {type}
+                                                </p>
+
+                                                <p>
+                                                    Difficulty:
+                                                    {difficulty}
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                    </Card>
                                 )
                             }
+                        )
+                    }
 
-                            // console.log(answerList)
-                            return(
-                                
-                                <Card key={index}>
+                    <div class="formFooter">
+                        <div className="Player">
 
+                            <p>Name:</p>
+                            <input 
+                                type="text" 
+                                name="Name"
+                                id="name" 
+                                placeholder="name..."
+                            />                        
+                        </div>
 
-                                    <div className="half-size">
+                        <div className="SubmitField">
+                            <button type="submit">
+                                <strong>
+                                    Send
+                                </strong>
+                            </button>
+                        </div>
 
-                                        
-
-                                        <div className="l-side">
-                                            <h3>
-                                                {decodeHtmlEntities(question)}
-                                            </h3>
-                                            <select class={index}>
-
-                                                {
-                                                    randomList.map((item, index) => {
-                                                        let answer = item[0].answer
-                                                        let correct = item[0].correct
-
-                                                        return(
-                                                            <div 
-                                                                key={index}
-                                                                class="cardOptions"
-                                                            >
-                                                                <option
-                                                                    name={index}
-                                                                    class={correct}    
-                                                                >
-                                                                    {answer}
-                                                                </option>
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </select>
-                                        </div>
-
-                                        <div className="r-side">
-
-
-                                            <p>
-                                                Category: 
-                                                {category}
-                                            </p>
-
-                                            <p>
-                                                Type:
-                                                {type}
-                                            </p>
-
-                                            <p>
-                                                Difficulty:
-                                                {difficulty}
-                                            </p>
-                                        </div>
-                                    </div>
-
-
-                                </Card>
-
-
-                            )
-                        }
-                    )}
-                    <input type="text" name="Name" id="name" placeholder="name..."/>                        
-                </form>
+                    </div>
+                </Form>
 
             </Container>
 
