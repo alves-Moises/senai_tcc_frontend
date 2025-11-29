@@ -4,6 +4,8 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 30px;
+    gap: 30px;
 `
 
 export const LoadingContainer = styled.div`
@@ -16,6 +18,51 @@ export const LoadingContainer = styled.div`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
+    background-color: #345995;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #345995;
+    margin-bottom: 35px;
+
+    .formFooter{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fdfdfd;
+
+        .Player{
+            display: flex;
+            flex-direction: row;
+            gap:30px;
+            padding: 30px;
+            align-content: center;
+            align-items: center;
+        }
+        input{
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        .SubmitField{
+            display: flex;
+            flex-direction: column;
+            padding: 10px 50px;
+            button{
+                border-radius: 8px;
+                padding: 10px 30px;
+                background-color: #dfdfdf;
+                transition-duration: 0.5s;
+
+            }
+            button:hover{
+                cursor: pointer;
+                background-color: #dfa1a1;
+                transition-duration: 0.5s;
+                border: 1px solid #dfdfdf;
+
+            }
+        }
+    }
 `
 
 export const Card = styled.div`
@@ -24,7 +71,7 @@ export const Card = styled.div`
     align-items: center;
     
     margin: 6px;
-    border: #f0c 1px solid;
+    /* border: #f0c 1px solid; */
     padding: 10px;
 
     
@@ -32,24 +79,50 @@ export const Card = styled.div`
         display: flex;
         flex-direction: row;
         width: 100%;
-        background-color: #a76d9b;
+        border: 1px solid #dfdfdf;
     }
 
     .l-side{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: stretch;
+        padding-bottom: 30px;
         width: 70%;
 
-        background-color: #fdd;
+        background-color: #31314b;
+        color: #fdfdfd;
 
-        h3{
+        .QTitle{
             text-align: center;
-            background-color: gray;
+            margin:  30px 10px ;
+            /* width: 50%; */
+            /* background-color: gray; */
         }
 
+        .true{
+            color: green;
+        }
+        .false{
+            color: red;
+        }
+        .answSelect{
+            color: #121e81;
+            padding: 5px 10px;
+            min-width: 40%;
+            text-align: center;
+        }
     }
 
     .r-side{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        padding: 16px;
+        gap: 8px;
         width: 30%;
-        background-color: #f0c;
+        background-color: #dadadf;
     }
 
 
