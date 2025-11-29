@@ -33,8 +33,6 @@ export const Card = styled.div`
         flex-direction: row;
         width: 100%;
         background-color: #a76d9b;
-
-        
     }
 
     .l-side{
