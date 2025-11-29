@@ -23,29 +23,39 @@ export function Quizz() {
                 )
             ).toString()
 
-            const res = await fetch(
-                `${baseURL}?${queryParams}`
-            )
+            try{
 
-            console.log(res.status)
-            if(res.status == 429){
-                console.log("To manny Requests. Waiting 6 sec...")
-                // alert("to many quests")
-                return setTimeout(
-                        fetchAPI, 6000
-                    )
-                
-            }
+                const res = await fetch(
+                    `${baseURL}?${queryParams}`
+                )
+
+                if(!res.ok){
+                    throw new Error(`HTTP Error: ${res.status}`)
+
+                }
+                console.log(res.status)
+                let data = await res.json()
+                setQuestList(data.results)
+
+                // if(res.status == 429){
+                //     console.log("To manny Requests. Waiting 6 sec...")
+                //      alert("to many quests")
+                //     return setTimeout(
+                //             fetchAPI, 6000
+                //         )
+                // }
             
-            let data = await res.json()
-            setQuestList(data.results)
+                
+            }catch(err){
+                console.error(err)
+            }finally{
+
+            setLoading(false)
+
+            }
         }
 
-
-
         fetchAPI()
-
-        setLoading(false)
     }, [])
 
 
@@ -100,16 +110,38 @@ export function Quizz() {
                             let answerList = []
 
                             answerList.push({
-                                "question": correct_answer,
+                                "answer": correct_answer,
                                 "correct": "true"
                             })
 
                             incorrect_answers.forEach(answer => {
                                 answerList.push({
-                                    "question": answer,
+                                    "answer": answer,
                                     "correct": "false"
                                 })
                             })
+
+                            console.log(incorrect_answers)
+
+                            let randomList = []
+                            let len = answerList.length
+                            for(
+                                let i = 0; 
+                                i <  len; 
+                                i++
+                            ){
+                                randomList.push(
+                                    answerList.splice(
+                                        Math.floor(
+                                            Math.random()*(
+                                                answerList.length -1
+                                            )
+                                        ),
+                                        1
+                                    )
+                                )
+                            }
+
                             // console.log(answerList)
                             return(
                                 
@@ -124,12 +156,29 @@ export function Quizz() {
                                             <h3>
                                                 {decodeHtmlEntities(question)}
                                             </h3>
-                                            <span>
-                                                
-                                            {answerList.map(answer => (
-                                                <p>{answer}</p>
-                                            ))}
-                                            </span>
+                                            <select class={index}>
+
+                                                {
+                                                    randomList.map((item, index) => {
+                                                        let answer = item[0].answer
+                                                        let correct = item[0].correct
+
+                                                        return(
+                                                            <div 
+                                                                key={index}
+                                                                class="cardOptions"
+                                                            >
+                                                                <option
+                                                                    name={index}
+                                                                    class={correct}    
+                                                                >
+                                                                    {answer}
+                                                                </option>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
                                         </div>
 
                                         <div className="r-side">
@@ -153,13 +202,13 @@ export function Quizz() {
                                     </div>
 
 
-
                                 </Card>
 
 
                             )
                         }
                     )}
+                    <input type="text" name="Name" id="name" placeholder="name..."/>                        
                 </form>
 
             </Container>
