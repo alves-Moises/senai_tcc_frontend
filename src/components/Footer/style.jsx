@@ -18,6 +18,28 @@ export const  Container = styled.footer`
         color: #ba8aa6;
         transition-duration: 0.5s;
     }
+
+    .iconWPP{
+        color: #15651f;
+        transition-duration: 0.5s;
+
+    }
+    .iconWPP:hover{
+        color: #277e33;
+        transition-duration: 0.2s;
+
+    }
+
+    .iconLKDN{
+        color: #0a66c2;
+        transition-duration: 0.5s;
+
+    }
+    .iconLKDN:hover{
+        color: #2084e7;
+        transition-duration: 0.2s;
+
+    }
 `
 
 export const Row = styled.div`
