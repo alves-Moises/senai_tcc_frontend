@@ -19,6 +19,15 @@ export function Footer(){
                 </Col>
                 <Col>
                     <a 
+                        href="https://wa.me/5522999668509?text=Ola,+gostei+do+seu+site!" 
+                        target="_blank" 
+                    >
+                        <WhatsappLogoIcon 
+                            size={32} 
+                            className="icon iconWPP"
+                        />
+                    </a>
+                    <a 
                         href="https://www.github.com/alves-Moises"
                         target="_blank"
                     >
