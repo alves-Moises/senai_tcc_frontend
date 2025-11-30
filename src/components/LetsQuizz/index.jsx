@@ -47,7 +47,10 @@ export const LetsQuizz = () => {
                             </a>
 
                         </div>
-                        <div className="half-size">
+
+                        <div 
+                            className="half-size"
+                        >
                             <h3
                                 id="subGameRules"
 
