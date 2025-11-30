@@ -11,14 +11,14 @@ export const Container = styled.header`
         gap: 20px;
 
         a{
-            background-color: #345995;
             color: #dfdfdf;
             padding: 8px 14px;
             border-radius: 4px;
             }
         a:hover{
-            background-color: #fb4d3d;
             color: #fff;
+            background-color: #fb4d3d;
+            transition-duration: 0.5s;
         }
     }
 
