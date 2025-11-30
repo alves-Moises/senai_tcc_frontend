@@ -45,7 +45,6 @@ export const LetsQuizz = () => {
                             >
                                 Random game
                             </a>
-
                         </div>
 
                         <div 
