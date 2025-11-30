@@ -1,10 +1,14 @@
 import { Container } from "./style"
+import Logo from "../../assets/img/logo/Logo.png"
 
 export function Header(){
     return(
         <Container>
             <a href="/">
-                <img alt="logo" />
+                <img
+                    src={Logo}
+                    alt="logo" 
+                />
             </a>
             <navbar>
                 <a href="/">Home</a>
