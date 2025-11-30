@@ -24,6 +24,34 @@ export const Form = styled.form`
     border: 1px solid #345995;
     margin-bottom: 35px;
 
+
+    .recordField{
+        display: flex;
+        visibility: hidden;
+        align-items: center;
+        justify-content: center;
+        margin:   10px 0;
+        transition-duration: 1s;
+        
+        a{
+            border-radius: 8px;
+            border: 1px solid #cad;
+            background-color: #cc2718;
+
+            color: #fff;
+            padding: 10px 50px;
+            transition-duration: 0.5s ;
+
+        }
+        
+        a:hover{
+            background-color: #fb4d3d;
+            color: #dfdfdf;
+            transition-duration: 0.5s ;
+            padding: 10px 55px;
+        }
+    }
+
     .formFooter{
         display: flex;
         align-items: center;
@@ -56,10 +84,9 @@ export const Form = styled.form`
             }
             button:hover{
                 cursor: pointer;
-                background-color: #dfa1a1;
+                background-color: #d37f7f;
                 transition-duration: 0.5s;
                 border: 1px solid #dfdfdf;
-
             }
         }
     }
