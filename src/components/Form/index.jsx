@@ -35,10 +35,6 @@ export const Form = () => {
         fetchAPI()
     }, [])
     
-
-    //TODO: fix eventListener
-
-            
     function sendForm(event, navigate){
         event.preventDefault()
         const formData = {
@@ -56,13 +52,8 @@ export const Form = () => {
                 }
             }
         )
-        
-        // console.log(newData)
-        // alert(`${newData}`)
         navigate("/quizz", {state: newData})
-
     }
-
 
     if(loading){return (
             <Container>
@@ -75,10 +66,6 @@ export const Form = () => {
             </Container>
         )
     }
-
-
-    
-
     
     return (
         <>
@@ -210,19 +197,21 @@ export const Form = () => {
 
                     <button
                         id="sendForm" 
-                        onClick={(event) => {sendForm(event, navigate)}}
+                        onClick={
+                            (event) => {
+                                sendForm(
+                                    event, 
+                                    navigate
+                                )
+                            }
+                        }
                     >
                         SEND
                     </button>
-                    
-                </form>
 
-                
-                    
-                
+                </form>
             </Container>
 
-       
         </>
     )
 }
