@@ -1,8 +1,13 @@
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
+import { RecordContainer } from "../../components/RecordContainer";
 
 export function Records() {
     return(
         <>
-            <h1>Records</h1>
+            <Header />
+            <RecordContainer />
+            <Footer />
         </>
     )
 }
