@@ -1,7 +1,11 @@
 import { Container } from "./style"
+import { useLocation } from "react-router-dom"
 import Logo from "../../assets/img/logo/Logo.png"
 
 export function Header(){
+    const location  = useLocation()
+    const pageName = location.pathname
+
     return(
         <Container>
             <a href="/">
