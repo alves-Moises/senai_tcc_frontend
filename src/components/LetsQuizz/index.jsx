@@ -30,9 +30,12 @@ export const LetsQuizz = () => {
                             </h3>
 
                             <ul>
-                                <li>10 questions by default</li>
-                                <li>Random theme and dificulty</li>
-
+                                <li>
+                                    10 questions by default
+                                </li>
+                                <li>
+                                    Random theme and dificulty
+                                </li>
                             </ul>
 
                             <a 
