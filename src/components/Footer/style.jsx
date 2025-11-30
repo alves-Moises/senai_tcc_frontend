@@ -10,7 +10,7 @@ export const  Container = styled.footer`
     color: #dfdfdf;
     padding: 10px;
 
-    .icon{
+    .iconGHB{
         color: #8a9cba;
         transition-delay: 0.5s;
     }
