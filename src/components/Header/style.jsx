@@ -28,7 +28,7 @@ export const Container = styled.header`
     }
 
     .disabled{
-            background-color: #345995;
+        background-color: #345995;
         transition-duration: 0.5s;
     }
 `
