@@ -67,7 +67,9 @@ export const Form = () => {
     if(loading){return (
             <Container>
                 <h1 id="Load">
-                    <HourglassMediumIcon size={32} />
+                    <HourglassMediumIcon 
+                        size={32} 
+                    />
                     Loading...
                 </h1>
             </Container>
