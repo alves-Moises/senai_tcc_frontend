@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { Quizz}  from "./pages/Quizz"
 import { Records } from "./pages/Records";
 import { FormRules } from "./pages/FormRules";
+import { Error } from "./pages/Error";
 
 export const router = createBrowserRouter([
     {
@@ -23,5 +24,9 @@ export const router = createBrowserRouter([
     {
         path: "/form",
         element: <FormRules />
-    }    
+    },
+    {
+        path: "*",
+        element: <Error />
+    }
 ])
