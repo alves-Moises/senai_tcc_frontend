@@ -97,6 +97,7 @@ export const Form = () => {
                             placeholder="quantity"
                             defaultValue="10"
                             min="1"
+                            max="50"
                             id="qtd"
                             className="optInput"
                         />
