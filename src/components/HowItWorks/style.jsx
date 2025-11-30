@@ -29,8 +29,8 @@ export const Container = styled.div`
         }
         
         p{
-        width: 300px;
-        text-align: justify;
+            width: 300px;
+            text-align: justify;
         }
         
         .r-side{
