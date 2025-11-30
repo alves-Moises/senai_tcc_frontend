@@ -14,7 +14,7 @@ export const  Container = styled.footer`
         color: #8a9cba;
         transition-delay: 0.5s;
     }
-    .icon:hover{
+    .iconGHB:hover{
         color: #ba8aa6;
         transition-duration: 0.5s;
     }
