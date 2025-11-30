@@ -33,7 +33,7 @@ export function Footer(){
                     >
                         <GithubLogo 
                             size={32} 
-                            className="icon"
+                            className="icon iconGHB"
                         />
                     </a>
                     <a 
@@ -42,7 +42,7 @@ export function Footer(){
                     >
                         <LinkedinLogo 
                             size={32} 
-                            className="icon"
+                            className="icon iconLKDN"
                         />
                     </a>
 
