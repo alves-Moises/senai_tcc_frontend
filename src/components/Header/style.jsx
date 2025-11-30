@@ -14,7 +14,7 @@ export const Container = styled.header`
             color: #dfdfdf;
             padding: 8px 14px;
             border-radius: 4px;
-            }
+        }
         a:hover{
             color: #fff;
             background-color: #fb4d3d;
@@ -32,4 +32,3 @@ export const Container = styled.header`
         transition-duration: 0.5s;
     }
 `
-
