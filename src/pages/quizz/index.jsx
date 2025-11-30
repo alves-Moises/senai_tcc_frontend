@@ -7,7 +7,7 @@ import { Card, Container, Form, LoadingContainer } from "./style"
 export function Quizz() {
     const [loading, setLoading] = useState(true)
     const [questList, setQuestList] = useState([])
-    
+
     const location = useLocation()
     const {state} = location
 
@@ -58,6 +58,79 @@ export function Quizz() {
         fetchAPI()
     }, [])
 
+    const saveScore = async(user, score) =>{
+        const URLBase = "http://localhost:3000/records"
+        const userData = {
+            name: user,
+            score: score
+        }
+
+        try{
+
+            res = await fetch(URLBase, {
+                method: "POST",
+                headers:{
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(
+                res => {
+                    res.json()
+                }
+            )
+        }catch(err){
+            console.error(`ERROR: ${err}`)
+        }finally{
+            console.log(res.status)
+        }
+        
+
+    }
+
+    const formSubmit = (event) => {
+        event.preventDefault()
+        
+        const userName = document.getElementById("name").value
+        if(!userName){
+            alert("digite o nome de usuário")
+            return
+        }
+
+        (document.querySelectorAll(".answSelect")).forEach(element => {
+            element.disabled = true
+        })
+
+        document.getElementsByClassName("recordField")[0].style.visibility = "visible"
+        const correct = document.querySelectorAll("*:checked.true")
+        const incorrect = document.querySelectorAll("*:checked.false")
+
+        const totalQuestions = correct.length + incorrect.length
+        console.log(totalQuestions)
+        console.log(correct.length)
+        const score = (correct.length / totalQuestions) * 100
+        alert(score)
+
+        correct.forEach(item => {
+            console.log(item)
+            item.parentElement.style =` 
+                background-color: #3da522;
+                color: #fff;
+                font-weight: bold;
+                `
+        })
+
+        incorrect.forEach(item => {
+            console.log(item)
+            item.parentElement.style = `
+                background-color: #922257;
+                color: #fff;
+                font-weight: bold;
+            `
+        })
+
+        saveScore(userName, score)
+    }
 
     // html treatmment char
     const decodeHtmlEntities = (text) => {
@@ -148,8 +221,6 @@ export function Quizz() {
                                 return(
                                     
                                     <Card key={index}>
-
-
                                         <div className="half-size">
 
                                             
@@ -169,17 +240,13 @@ export function Quizz() {
                                                             let correct = item[0].correct
 
                                                             return(
-                                                                <div 
+                                                                <option
                                                                     key={index}
-                                                                    class="cardOptions"
+                                                                    name={index}
+                                                                    className={`${correct} opt`}    
                                                                 >
-                                                                    <option
-                                                                        name={index}
-                                                                        class={`${correct} opt`}    
-                                                                    >
-                                                                        {decodeHtmlEntities(answer)}
-                                                                    </option>
-                                                                </div>
+                                                                    {decodeHtmlEntities(answer)}
+                                                                </option>
                                                             )
                                                         })
                                                     }
@@ -191,7 +258,7 @@ export function Quizz() {
 
                                                 <p>
                                                     Category: 
-                                                    {category}
+                                                    {decodeHtmlEntities(category)}
                                                 </p>
 
                                                 <p>
@@ -206,14 +273,14 @@ export function Quizz() {
                                             </div>
                                         </div>
 
-
                                     </Card>
                                 )
                             }
                         )
                     }
 
-                    <div class="formFooter">
+                   
+                    <div className="formFooter">
                         <div className="Player">
 
                             <p>Name:</p>
@@ -222,22 +289,41 @@ export function Quizz() {
                                 name="Name"
                                 id="name" 
                                 placeholder="name..."
+                                required
                             />                        
                         </div>
 
+                        
+
                         <div className="SubmitField">
-                            <button type="submit">
+                            <button 
+                                onClick={
+                                    (event) => {
+                                        formSubmit(event)
+                                    }
+                                }
+                            >
                                 <strong>
-                                    Send
+                                    SEND
                                 </strong>
                             </button>
                         </div>
 
                     </div>
+
+                    <div 
+                        className="recordField"
+                    >
+                        <a 
+                            href="/records" 
+                            id="records"
+                        >
+                            Records
+                        </a>
+                    </div>
                 </Form>
 
             </Container>
-
 
             <Footer />
         </>
