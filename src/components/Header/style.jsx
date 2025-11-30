@@ -21,5 +21,15 @@ export const Container = styled.header`
             color: #fff;
         }
     }
+
+    .active{
+        background-color: #a8342a;
+        transition-duration: 0.5s;
+    }
+
+    .disabled{
+            background-color: #345995;
+        transition-duration: 0.5s;
+    }
 `
 
