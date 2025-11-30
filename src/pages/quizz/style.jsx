@@ -36,7 +36,7 @@ export const Form = styled.form`
         a{
             border-radius: 8px;
             border: 1px solid #cad;
-            background-color: #cc2718;
+            background-color: #b02c20;
 
             color: #fff;
             padding: 10px 50px;
@@ -45,7 +45,7 @@ export const Form = styled.form`
         }
         
         a:hover{
-            background-color: #fb4d3d;
+            background-color: #c31809;
             color: #dfdfdf;
             transition-duration: 0.5s ;
             padding: 10px 55px;
@@ -127,12 +127,12 @@ export const Card = styled.div`
             /* background-color: gray; */
         }
 
-        .true{
+        /* .true{
             color: green;
         }
         .false{
             color: red;
-        }
+        } */
         .answSelect{
             color: #121e81;
             padding: 5px 10px;
@@ -151,6 +151,4 @@ export const Card = styled.div`
         width: 30%;
         background-color: #dadadf;
     }
-
-
 `

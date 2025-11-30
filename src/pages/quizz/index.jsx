@@ -45,7 +45,6 @@ export function Quizz() {
                 //         )
                 // }
             
-                
             }catch(err){
                 console.error(err)
             }finally{
@@ -66,7 +65,6 @@ export function Quizz() {
         }
 
         try{
-
             res = await fetch(URLBase, {
                 method: "POST",
                 headers:{
@@ -101,6 +99,10 @@ export function Quizz() {
             element.disabled = true
         })
 
+        document.getElementById("name").disabled = true
+        document.getElementById("submitBTN").disabled = true
+
+
         document.getElementsByClassName("recordField")[0].style.visibility = "visible"
         const correct = document.querySelectorAll("*:checked.true")
         const incorrect = document.querySelectorAll("*:checked.false")
@@ -109,7 +111,6 @@ export function Quizz() {
         console.log(totalQuestions)
         console.log(correct.length)
         const score = (correct.length / totalQuestions) * 100
-        alert(score)
 
         correct.forEach(item => {
             console.log(item)
@@ -145,7 +146,7 @@ export function Quizz() {
 
         return decodedString;
     };
-    // const [seachParams, setSearchParams] = useSearchParams
+
     
     if(loading){
         return(
@@ -159,8 +160,6 @@ export function Quizz() {
             </>
         )
     }
-
-    
 
     return(
         <>
@@ -279,7 +278,6 @@ export function Quizz() {
                         )
                     }
 
-                   
                     <div className="formFooter">
                         <div className="Player">
 
@@ -293,10 +291,9 @@ export function Quizz() {
                             />                        
                         </div>
 
-                        
-
                         <div className="SubmitField">
                             <button 
+                                id="submitBTN"
                                 onClick={
                                     (event) => {
                                         formSubmit(event)
