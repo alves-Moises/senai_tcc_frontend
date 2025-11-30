@@ -11,9 +11,24 @@ export function Header(){
                 />
             </a>
             <navbar>
-                <a href="/">Home</a>
-                <a href="/quizz">Quizz</a>
-                <a href="/records">Records</a>
+                <a 
+                    className={`${pageName == "/"?"active" : "disabled"}`}
+                    href="/"
+                >
+                    Home
+                </a>
+                <a 
+                    className={`${pageName == "/quizz"?"active" : "disabled"}`}
+                    href="/quizz"
+                >
+                    Quizz
+                </a>
+                <a
+                    className={`${pageName == "/records"?"active" : "disabled"}`}
+                    href="/records"
+                >
+                        Records
+                </a>
             </navbar>
         </Container>
     )
