@@ -7,7 +7,8 @@ import {
 
 import {
     GithubLogo, 
-    LinkedinLogo 
+    LinkedinLogo, 
+    WhatsappLogoIcon
 } from "@phosphor-icons/react"
 
 export function Footer(){
